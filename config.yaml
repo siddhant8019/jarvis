@@ -1,0 +1,58 @@
+baba:
+  # Wake word settings
+  wake_word:
+    engine: "vad_whisper"
+    phrase: "hey jarvis"
+    sensitivity: 0.5
+
+  # ASR settings
+  asr:
+    engine: "faster_whisper"
+    model: "small.en"
+    silence_threshold_seconds: 1.0
+    max_recording_seconds: 30
+
+  # LLM settings (for intent parsing)
+  llm:
+    provider: "ollama"
+    model: "qwen2.5:7b"
+    base_url: "http://localhost:11434"
+    temperature: 0
+    max_tokens: 256
+
+  # TTS settings (edge-tts neural voices)
+  tts:
+    engine: "edge_tts"
+    voice: "en-US-AndrewNeural"
+    rate: "+0%"
+
+  # Session settings
+  session:
+    timeout_seconds: 120
+    exit_phrases:
+      - "goodbye"
+      - "bye bye"
+      - "stop listening"
+      - "that's all"
+      - "go to sleep"
+      - "i'm done"
+      - "end session"
+      - "thanks that's it"
+
+  # Action settings
+  actions:
+    default_browser: "Google Chrome"
+    notes_file: "~/Documents/baba_notes.md"
+    claude_model: "claude-sonnet-4-6"
+    claude_max_tokens: 1024
+
+  # Logging
+  logging:
+    level: "INFO"
+    file: "~/Library/Logs/baba.log"
+
+  # Process management
+  process:
+    auto_start: false
+    restart_on_crash: true
+    idle_cpu_target_percent: 3
